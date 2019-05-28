@@ -21,14 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scenery" translatesAutoresizingMaskIntoConstraints="NO" id="aND-Em-4Dd">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gV8-tv-cnn">
                                 <rect key="frame" x="0.0" y="44" width="414" height="725"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scenery" translatesAutoresizingMaskIntoConstraints="NO" id="pnI-Aw-GsC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="725"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scenery" translatesAutoresizingMaskIntoConstraints="NO" id="aND-Em-4Dd">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scenery" translatesAutoresizingMaskIntoConstraints="NO" id="pnI-Aw-GsC">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Tic-mv-zt0" appends="YES" id="SIM-TY-qcM"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNF-wb-wwY">
                                 <rect key="frame" x="0.0" y="769" width="414" height="44"/>
                                 <subviews>
@@ -97,16 +108,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="JNF-wb-wwY" secondAttribute="trailing" id="4Uj-nU-89n"/>
-                            <constraint firstItem="pnI-Aw-GsC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5sd-fF-Zp1"/>
-                            <constraint firstItem="aND-Em-4Dd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AH5-w4-n1a"/>
-                            <constraint firstItem="JNF-wb-wwY" firstAttribute="top" secondItem="aND-Em-4Dd" secondAttribute="bottom" id="GY2-gV-4Y4"/>
-                            <constraint firstItem="aND-Em-4Dd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Hr8-fN-WFn"/>
-                            <constraint firstItem="JNF-wb-wwY" firstAttribute="top" secondItem="pnI-Aw-GsC" secondAttribute="bottom" id="Rto-cy-hC6"/>
-                            <constraint firstAttribute="trailing" secondItem="aND-Em-4Dd" secondAttribute="trailing" id="VAw-Rk-Dte"/>
+                            <constraint firstItem="JNF-wb-wwY" firstAttribute="top" secondItem="gV8-tv-cnn" secondAttribute="bottom" id="YYO-kt-4NF"/>
+                            <constraint firstAttribute="trailing" secondItem="gV8-tv-cnn" secondAttribute="trailing" id="d3o-DH-hch"/>
+                            <constraint firstItem="gV8-tv-cnn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="e6h-kN-JgV"/>
                             <constraint firstItem="JNF-wb-wwY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ezb-a7-a7E"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JNF-wb-wwY" secondAttribute="bottom" id="gS7-Xm-JhX"/>
-                            <constraint firstAttribute="trailing" secondItem="pnI-Aw-GsC" secondAttribute="trailing" id="qmk-fP-mte"/>
-                            <constraint firstItem="pnI-Aw-GsC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zjb-Eg-x0U"/>
+                            <constraint firstItem="gV8-tv-cnn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gwL-gS-il1"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -117,6 +124,7 @@
                         <outlet property="compareImageView" destination="pnI-Aw-GsC" id="OgZ-xe-L87"/>
                         <outlet property="editButton" destination="7UZ-uq-kpD" id="jYB-Pf-sFo"/>
                         <outlet property="filterButton" destination="C6B-1F-j0K" id="yGN-3P-hEa"/>
+                        <outlet property="imageContainerView" destination="gV8-tv-cnn" id="EpO-4E-jCM"/>
                         <outlet property="imageView" destination="aND-Em-4Dd" id="liN-ei-UMS"/>
                         <outlet property="secondaryMenu" destination="ePS-oG-ZHP" id="Be7-JW-Iwe"/>
                         <outlet property="sliderMenu" destination="0jh-5G-8s6" id="VWd-2X-axB"/>
@@ -181,6 +189,12 @@
                         <constraint firstAttribute="bottom" secondItem="k12-sr-GbX" secondAttribute="bottom" id="dQ9-U5-ycI"/>
                     </constraints>
                 </view>
+                <tapGestureRecognizer id="Tic-mv-zt0">
+                    <connections>
+                        <action selector="onImageContainerTap:" destination="BYZ-38-t0r" id="2Jq-Xb-47m"/>
+                        <outlet property="delegate" destination="gV8-tv-cnn" id="pWm-X5-ch3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="386.95652173913044" y="328.79464285714283"/>
         </scene>

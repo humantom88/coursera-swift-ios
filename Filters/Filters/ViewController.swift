@@ -18,6 +18,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet public var secondaryMenu: UIView!
     @IBOutlet public var bottomMenu: UIView!
     @IBOutlet public var sliderMenu: UIView!
+    @IBOutlet public var imageContainerView: UIView!
+
+    @IBOutlet var imageContainerTapRecognizer: UITapGestureRecognizer!
+    
     public var output: Presenter!
 
     @IBAction func onRedFilter(_ sender: UIButton) {
@@ -117,6 +121,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.output.updateImageFilters()
     }
     
+    @IBAction func onImageContainerTap(_ sender: UITapGestureRecognizer) {
+        self.onCompare(self.compareButton)
+    }
+
     func showSecondaryMenu() {
         view.addSubview(secondaryMenu)
         
