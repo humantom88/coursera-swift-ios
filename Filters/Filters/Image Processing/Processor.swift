@@ -17,11 +17,13 @@ public class Processor {
     
     var filters: [FiltersState: FilterProtocol]
     
+    var multiplier = 5
+    
     public init(average: Average) {
         self.filters = [
-            FiltersState.redFilter: RedFilter(multiplier: 5, average: average),
-            FiltersState.greenFilter: GreenFilter(multiplier: 5, average: average),
-            FiltersState.blueFilter: BlueFilter(multiplier: 5, average: average)
+            FiltersState.redFilter: RedFilter(average: average),
+            FiltersState.greenFilter: GreenFilter(average: average),
+            FiltersState.blueFilter: BlueFilter(average: average)
         ]
     }
     
@@ -58,35 +60,9 @@ public class Processor {
     
     private func applyFilter(pixel: Pixel, filtersState: FiltersState, filter: FiltersState) -> Pixel {
         if (filtersState.contains(filter)) {
-            return self.filters[filter]?.filter(sourcePixel: pixel) ?? pixel
+            return self.filters[filter]?.filter(sourcePixel: pixel, multiplier: multiplier) ?? pixel
         }
         
         return pixel
     }
 }
-
-/*
- let image = UIImage(named: "sample")
- 
- // Declare the RGBAImage
- var myRGBA = RGBAImage(image: image!)
- 
- // Workflow
- let average = Average.getAverageFromImage(rgb: myRGBA!)
- 
- let redFilter = RedFilter(multiplier: 5, average: average!)
- let greenFilter = GreenFilter(multiplier: 5, average: average!)
- let blueFilter = BlueFilter(multiplier: 5, average: average!)
- let brightnessFilter = BrightnessFilter(multiplier: 3, average: average!)
- let secondGreenFilter = GreenFilter(multiplier: 2, average: average!)
- 
- let filtersPipeline = [redFilter, greenFilter, brightnessFilter]
- 
- let processor = Processor(filters: filtersPipeline)
- 
- var anotherImage = RGBAImage(image: image!)
- processor.processImage(image: &anotherImage!)
- 
- let realImage = anotherImage!.toUIImage()
-
- */

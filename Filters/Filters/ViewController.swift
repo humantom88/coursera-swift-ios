@@ -11,15 +11,15 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet public var filterButton: UIButton!
-    @IBOutlet public var compareButton: UIButton!
     @IBOutlet public var editButton: UIButton!
+    @IBOutlet public var compareButton: UIButton!
     @IBOutlet public var imageView: UIImageView!
     @IBOutlet public var compareImageView: UIImageView!
     @IBOutlet public var secondaryMenu: UIView!
     @IBOutlet public var bottomMenu: UIView!
+    @IBOutlet public var sliderMenu: UIView!
     public var output: Presenter!
-    // public var gr: UIGestureRecognizer
-    
+
     @IBAction func onRedFilter(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         output.updateFiltersState(isSelected: sender.isSelected, filter: FiltersState.redFilter)
@@ -46,6 +46,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         secondaryMenu.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         secondaryMenu.translatesAutoresizingMaskIntoConstraints = false
+        
+        sliderMenu.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        sliderMenu.translatesAutoresizingMaskIntoConstraints = false
+        
         compareButton.isEnabled = false
     }
     
@@ -82,6 +86,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             sender.isSelected = false
         } else {
             showSecondaryMenu()
+            hideSlider()
             sender.isSelected = true
         }
     }
@@ -96,8 +101,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         output.toggleCompare(sender.isSelected)
     }
     
-    @IBAction func onEdit() {
-        
+    @IBAction func onEdit(_ sender: UIButton) {
+        if (sender.isSelected) {
+            self.hideSlider()
+            sender.isSelected = false
+        } else {
+            sender.isSelected = true
+            self.hideSecondaryMenu()
+            self.showSlider()
+        }
+    }
+    
+    @IBAction func onSliderChange(_ sender: UISlider) {
+        self.output.processor?.multiplier = Int(sender.value)
+        self.output.updateImageFilters()
     }
     
     func showSecondaryMenu() {
@@ -120,11 +137,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func hideSecondaryMenu() {
+        self.filterButton.isSelected = false
         UIView.animate(withDuration: 0.4, animations: {
             self.secondaryMenu.alpha = 0
         }) { completed in
             if completed == true {
                 self.secondaryMenu.removeFromSuperview()
+            }
+        }
+    }
+    
+    func showSlider() {
+        view.addSubview(sliderMenu)
+        let bottomConstraint = sliderMenu.bottomAnchor.constraint(equalTo: bottomMenu.topAnchor)
+        let leftConstraint = sliderMenu.leftAnchor.constraint(equalTo: view.leftAnchor)
+        let rightConstraint = sliderMenu.rightAnchor.constraint(equalTo: view.rightAnchor)
+        
+        let heightConstraint = sliderMenu.heightAnchor.constraint(equalToConstant: 80)
+        
+        NSLayoutConstraint.activate([bottomConstraint, leftConstraint, rightConstraint, heightConstraint])
+        
+        view.layoutIfNeeded()
+        
+        self.sliderMenu.alpha = 0
+        UIView.animate(withDuration: 0.4) {
+            self.sliderMenu.alpha = 1.0
+        }
+    }
+    
+    func hideSlider() {
+        self.editButton.isSelected = false
+        UIView.animate(withDuration: 0.4, animations: {
+            self.sliderMenu.alpha = 0
+        }) { completed in
+            if completed == true {
+                self.sliderMenu.removeFromSuperview()
             }
         }
     }

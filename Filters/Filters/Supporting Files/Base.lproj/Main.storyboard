@@ -59,7 +59,7 @@
                                                 <rect key="frame" x="165.5" y="0.0" width="83" height="44"/>
                                                 <state key="normal" title="Edit"/>
                                                 <connections>
-                                                    <action selector="onEdit" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ps2-nt-7FH"/>
+                                                    <action selector="onEdit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vqD-FZ-vMG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPg-2N-f93">
@@ -115,10 +115,11 @@
                         <outlet property="bottomMenu" destination="JNF-wb-wwY" id="jTm-2q-PDu"/>
                         <outlet property="compareButton" destination="tPg-2N-f93" id="3eM-gs-YwJ"/>
                         <outlet property="compareImageView" destination="pnI-Aw-GsC" id="OgZ-xe-L87"/>
-                        <outlet property="editButton" destination="7UZ-uq-kpD" id="e2S-Q4-MUC"/>
+                        <outlet property="editButton" destination="7UZ-uq-kpD" id="jYB-Pf-sFo"/>
                         <outlet property="filterButton" destination="C6B-1F-j0K" id="yGN-3P-hEa"/>
                         <outlet property="imageView" destination="aND-Em-4Dd" id="liN-ei-UMS"/>
                         <outlet property="secondaryMenu" destination="ePS-oG-ZHP" id="Be7-JW-Iwe"/>
+                        <outlet property="sliderMenu" destination="0jh-5G-8s6" id="VWd-2X-axB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -159,6 +160,25 @@
                         <constraint firstAttribute="bottom" secondItem="n3M-NR-6VP" secondAttribute="bottom" id="IFa-Q5-UOE"/>
                         <constraint firstItem="n3M-NR-6VP" firstAttribute="top" secondItem="ePS-oG-ZHP" secondAttribute="top" id="ciD-QT-Tl9"/>
                         <constraint firstItem="n3M-NR-6VP" firstAttribute="leading" secondItem="ePS-oG-ZHP" secondAttribute="leading" id="uEa-cd-VyS"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="0jh-5G-8s6">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="k12-sr-GbX">
+                            <rect key="frame" x="18" y="-1" width="204" height="129"/>
+                            <connections>
+                                <action selector="onSliderChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="d6n-be-EB9"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="k12-sr-GbX" firstAttribute="top" secondItem="0jh-5G-8s6" secondAttribute="top" id="0em-YV-nNp"/>
+                        <constraint firstAttribute="trailing" secondItem="k12-sr-GbX" secondAttribute="trailing" constant="20" id="CAv-AF-s7P"/>
+                        <constraint firstItem="k12-sr-GbX" firstAttribute="leading" secondItem="0jh-5G-8s6" secondAttribute="leading" constant="20" id="FF4-cM-LBa"/>
+                        <constraint firstAttribute="bottom" secondItem="k12-sr-GbX" secondAttribute="bottom" id="dQ9-U5-ycI"/>
                     </constraints>
                 </view>
             </objects>

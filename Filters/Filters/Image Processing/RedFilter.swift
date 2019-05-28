@@ -2,14 +2,12 @@ import Foundation
 
 public class RedFilter : FilterProtocol {
     public var average: Average
-    public var multiplier: Int = 1
 
-    public init(multiplier: Int, average: Average) {
+    public init(average: Average) {
         self.average = average
-        self.multiplier = multiplier
     }
     
-    public func filter(sourcePixel: Pixel) -> Pixel {
+    public func filter(sourcePixel: Pixel, multiplier: Int) -> Pixel {
         var newPixel = sourcePixel
 
         let redDiff = Int(sourcePixel.red) - average.red

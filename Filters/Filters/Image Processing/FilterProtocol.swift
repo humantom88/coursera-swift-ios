@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol FilterProtocol {
-    func filter(sourcePixel: Pixel) -> Pixel;
+    func filter(sourcePixel: Pixel, multiplier: Int) -> Pixel;
 }
 
 public enum Channel : String {
